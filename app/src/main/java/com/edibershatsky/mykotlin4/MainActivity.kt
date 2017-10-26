@@ -20,30 +20,46 @@ class MainActivity : AppCompatActivity() {
 
         plus.setOnClickListener { view ->
 //            Toast.makeText(applicationContext, "NOT IMPLEMENTED YET", Toast.LENGTH_SHORT).show()
-            var num = textToNum()
-            model!!.plus(num)
-            text.setText("")
+            plusClicked()
         }
 
         minus.setOnClickListener { view ->
-            var num = textToNum()
-            model!!.minus(num)
-            text.setText("")
+            minusClicked()
         }
 
         zero.setOnClickListener { view ->
-            text.setText("")
-            model!!.toZero()
+            zeroClicked()
         }
 
         equals.setOnClickListener { view ->
-            var num = textToNum()
-
-            model!!.equal(num)
-            text.setText(model!!.prev.toString())
+            equalsClicked()
         }
 
 
+    }
+
+    private fun equalsClicked() {
+        var num = textToNum()
+
+        model!!.equal(num)
+        text.setText(model!!.prev.toString())
+    }
+
+    private fun zeroClicked() {
+        text.setText("")
+        model!!.toZero()
+    }
+
+    private fun minusClicked() {
+        var num = textToNum()
+        model!!.minus(num)
+        text.setText("")
+    }
+
+    private fun plusClicked() {
+        var num = textToNum()
+        model!!.plus(num)
+        text.setText("")
     }
 
     private fun textToNum(): Double {
